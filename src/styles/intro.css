@@ -1,0 +1,41 @@
+.intro-heading {
+  display: flex;
+  margin-top: 10rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.intro-caption {
+  display: flex;
+  gap: 5px;
+}
+
+.intro-caption > div {
+  opacity: 0;
+}
+
+.perspective-intro > span {
+  font-size: clamp(2.9rem, 5vw, 3.5rem);
+}
+
+.perspective-intro {
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+  font-family: ZentryScreamer, Helvetica Neue, sans-serif;
+  line-height: 0.9;
+  padding: 1rem;
+}
+
+.line > span {
+  margin: 0 5px;
+  letter-spacing: -5px;
+}
+
+.perspective-intro {
+  transform: rotateY(70deg) rotateX(20deg);
+}
