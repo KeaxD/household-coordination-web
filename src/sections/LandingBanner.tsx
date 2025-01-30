@@ -31,7 +31,7 @@ const LandingBanner = () => {
   }, []);
 
   return (
-    <section>
+    <section id="landing-banner">
       <div className="banner">
         <div className="banner-img"></div>
         <div className="banner-text">

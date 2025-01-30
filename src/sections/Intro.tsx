@@ -97,7 +97,7 @@ const Intro = () => {
   }, []);
 
   return (
-    <section>
+    <section id="intro">
       <div className="intro-heading">
         <div className="intro-caption">
           <div>
