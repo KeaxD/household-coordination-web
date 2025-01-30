@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   background-color: #ffffff;
 
@@ -6,8 +10,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  min-height: 400vh;
   overflow-x: hidden;
+  min-height: 400vh;
 }
 
 html {

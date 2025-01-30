@@ -47,19 +47,26 @@ const Intro = () => {
       trigger: ".frame",
       start: "top top",
       end: () => `+=${window.innerHeight}`,
-      pin: ".frame-inner",
+      pin: ".frame",
       pinSpacing: false,
-      markers: true,
     });
+
+    // ScrollTrigger.create({
+    //   trigger: ".frame",
+    //   start: "10% top",
+    //   end: () => `+=${window.innerHeight}`,
+    //   pin: ".under-text",
+    //   pinSpacing: false,
+    // });
 
     //Animation for the frame
     gsap.to(".frame-inner", {
       scrollTrigger: {
-        trigger: ".frame",
+        trigger: ".frame-inner",
         start: "top top",
         end: `+=${window.innerHeight}`,
-        markers: true,
         scrub: 1,
+        markers: true,
         onUpdate: (self) => {
           const progress = self.progress;
           gsap.set(".frame-inner", {
@@ -91,6 +98,7 @@ const Intro = () => {
       },
     });
 
+    //Clean up all ScrollTriggers on unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -128,6 +136,14 @@ const Intro = () => {
         </div>
       </div>
       <div className="frame">
+        <div className="under-text">
+          <div>
+            <p>Connect</p>
+          </div>
+          <div>
+            <p>Control</p>
+          </div>
+        </div>
         <div className="frame-inner"></div>
       </div>
     </section>
