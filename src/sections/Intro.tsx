@@ -26,8 +26,74 @@ const Intro = () => {
       },
       rotateY: 0,
       rotateX: 0,
-      duration: 2,
+      translateX: 0,
+      translateY: 0,
+      duration: 1.5,
     });
+
+    gsap.to(".word", {
+      scrollTrigger: {
+        trigger: ".perspective-intro",
+        toggleActions: "restart none none none",
+      },
+      opacity: 1,
+      stagger: {
+        from: "random",
+        amount: 0.5,
+      },
+    });
+
+    ScrollTrigger.create({
+      trigger: ".frame",
+      start: "top top",
+      end: () => `+=${window.innerHeight}`,
+      pin: ".frame-inner",
+      pinSpacing: false,
+      markers: true,
+    });
+
+    //Animation for the frame
+    gsap.to(".frame-inner", {
+      scrollTrigger: {
+        trigger: ".frame",
+        start: "top top",
+        end: `+=${window.innerHeight}`,
+        markers: true,
+        scrub: 1,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          gsap.set(".frame-inner", {
+            clipPath: `polygon(
+                  50% ${gsap.utils.interpolate(15, 0, progress)}% ,
+                  ${gsap.utils.interpolate(
+                    80,
+                    100,
+                    progress
+                  )}% ${gsap.utils.interpolate(40, 0, progress)}% ,
+                  ${gsap.utils.interpolate(
+                    80,
+                    100,
+                    progress
+                  )}% ${gsap.utils.interpolate(75, 100, progress)}% ,
+                  ${gsap.utils.interpolate(
+                    20,
+                    0,
+                    progress
+                  )}% ${gsap.utils.interpolate(75, 100, progress)}% ,
+                  ${gsap.utils.interpolate(
+                    20,
+                    0,
+                    progress
+                  )}% ${gsap.utils.interpolate(40, 0, progress)}%
+                )`,
+          });
+        },
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   return (
@@ -60,6 +126,9 @@ const Intro = () => {
             </span>
           </div>
         </div>
+      </div>
+      <div className="frame">
+        <div className="frame-inner"></div>
       </div>
     </section>
   );

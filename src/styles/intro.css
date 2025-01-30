@@ -37,5 +37,28 @@
 }
 
 .perspective-intro {
-  transform: rotateY(70deg) rotateX(20deg);
+  transform: rotateY(70deg) rotateX(20deg) translateX(-80%) translateY(20px);
+}
+
+.word {
+  opacity: 0;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.frame-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url("https://images.unsplash.com/photo-1621570168297-bdcdd4457664?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: center;
+  background-size: cover;
+  clip-path: polygon(50% 15%, 80% 40%, 80% 75%, 20% 75%, 20% 40%);
 }
