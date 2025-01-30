@@ -51,14 +51,6 @@ const Intro = () => {
       pinSpacing: false,
     });
 
-    // ScrollTrigger.create({
-    //   trigger: ".frame",
-    //   start: "10% top",
-    //   end: () => `+=${window.innerHeight}`,
-    //   pin: ".under-text",
-    //   pinSpacing: false,
-    // });
-
     //Animation for the frame
     gsap.to(".frame-inner", {
       scrollTrigger: {
@@ -66,7 +58,6 @@ const Intro = () => {
         start: "top top",
         end: `+=${window.innerHeight}`,
         scrub: 1,
-        markers: true,
         onUpdate: (self) => {
           const progress = self.progress;
           gsap.set(".frame-inner", {
@@ -96,6 +87,69 @@ const Intro = () => {
           });
         },
       },
+    });
+
+    //Animation for the image in the frame
+    gsap.fromTo(
+      ".frame-inner img",
+      {
+        scale: 0.8, //Scale it from 80%
+      },
+      {
+        scrollTrigger: {
+          trigger: ".frame",
+          start: "top top",
+          end: `+=${window.innerHeight}`,
+          scrub: 1,
+        },
+        scale: 1, //Scale it to 100%
+      }
+    );
+
+    //Separation of each letter in the text under the frame
+    const words = document.querySelectorAll(".frame-text");
+
+    words.forEach((word) => {
+      if (!word || word.textContent === null) return;
+      const text = word.textContent;
+      word.innerHTML = text
+        .split(/(\s+)/)
+        .map((part) => {
+          if (part.trim() === "") {
+            return part;
+          } else {
+            return part
+              .split("")
+              .map(
+                (char) =>
+                  `<span style="opacity:0; display:inline-block;">${char}</span>`
+              )
+              .join("");
+          }
+        })
+        .join("");
+    });
+
+    //Animation for the text under the frame
+    function flickerAnimation(targets: any, toOpacity: number) {
+      gsap.to(targets, {
+        opacity: toOpacity,
+        duration: 0.03,
+        stagger: {
+          amount: 0.3,
+          from: "random",
+        },
+      });
+    }
+
+    ScrollTrigger.create({
+      trigger: ".intro-text",
+      start: "top top",
+      end: () => `+=${window.innerHeight}`,
+      onEnter: () => flickerAnimation(".frame-text span", 1),
+      onLeave: () => flickerAnimation(".frame-text span", 0),
+      onEnterBack: () => flickerAnimation(".frame-text span", 1),
+      onLeaveBack: () => flickerAnimation(".frame-text span", 0),
     });
 
     //Clean up all ScrollTriggers on unmount
@@ -138,13 +192,18 @@ const Intro = () => {
       <div className="frame">
         <div className="under-text">
           <div>
-            <p>Connect</p>
+            <p className="frame-text">Connect</p>
           </div>
           <div>
-            <p>Control</p>
+            <p className="frame-text">Control</p>
           </div>
         </div>
-        <div className="frame-inner"></div>
+        <div className="frame-inner">
+          <img
+            src="https://images.unsplash.com/photo-1621570168297-bdcdd4457664?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="house-image"
+          />
+        </div>
       </div>
     </section>
   );
