@@ -1,0 +1,74 @@
+#planning {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+.outer-mask,
+.inner-mask {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.mask {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  clip-path: path(
+    "M 759.586 183.47 L 759.586 183.47 Q 767.458 184.898 770.722 192.202 L 884.09 445.839 Q 887.355 453.143 879.394 453.937 L 332.119 508.574 Q 324.159 509.369 323.353 501.409 L 283.179 104.844 Q 282.373 96.8846 290.244 98.3128 Z"
+  );
+}
+
+.mask > img {
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.mask > div {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.mask > div > h1 {
+  color: white;
+}
+
+.plan-text {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: bold;
+  text-transform: uppercase;
+  text-wrap: wrap;
+  width: 50%;
+  margin: 0;
+  font-family: ZentryScreamer, Helvetica Neue, sans-serif;
+}
+
+.outer-mask,
+.inner-mask {
+  transform: rotateY(70deg) rotateX(20deg) translateX(-80%) translateY(20px);
+}
+
+.planning-desc {
+  position: absolute;
+  right: 5%;
+  bottom: 0;
+  width: 20%;
+  margin: 2rem;
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.planning-desc > p {
+  font-family: Roobert, Helvetica Neue, sans-serif;
+  font-size: 13px;
+}
