@@ -97,7 +97,7 @@ const Intro = () => {
       },
       {
         scrollTrigger: {
-          trigger: ".frame",
+          trigger: ".frame-inner",
           start: "top top",
           end: `+=${window.innerHeight}`,
           scrub: 1,
