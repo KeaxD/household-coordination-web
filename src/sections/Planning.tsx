@@ -1,6 +1,7 @@
 import "../styles/planning.css";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Planning = () => {
   const maskRef = useRef<HTMLDivElement | null>(null);
@@ -138,6 +139,26 @@ const Planning = () => {
       opacity: 1,
       duration: 1,
     });
+
+    //Background color change
+    gsap.fromTo(
+      "#planning",
+      { backgroundColor: "white" }, // Initial state
+      {
+        scrollTrigger: {
+          trigger: "#planning",
+          start: "10px top",
+          end: "bottom top",
+          markers: true,
+          onEnter: () => {
+            gsap.to("#planning", { backgroundColor: "#99ef64", duration: 0 }); // Change background when entering
+          },
+          onLeaveBack: () => {
+            gsap.to("#planning", { backgroundColor: "white", duration: 0 }); // Revert to white when scrolling back up
+          },
+        },
+      }
+    );
 
     //Cleanup event listener
     return () => {
