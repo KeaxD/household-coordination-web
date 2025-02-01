@@ -1,10 +1,16 @@
 import { useEffect } from "react";
 import "../styles/chores.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 const Chores = () => {
   useEffect(() => {
+    //Video play on hover
+    //Get the videos
     let videos = document.querySelectorAll("#video");
 
+    //Loop through each video and set up a event listener for hover
     videos.forEach((video) => {
       if (video instanceof HTMLVideoElement) {
         video.addEventListener("mouseover", () => {
@@ -18,6 +24,35 @@ const Chores = () => {
       }
     });
   }, []);
+
+  useGSAP(() => {
+    //=======GSAP ======//
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    //Animation for cards roll in
+    const cards = document.querySelectorAll(".chores-card");
+
+    cards.forEach((card) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, rotateX: -60, translateY: 30 },
+        {
+          scrollTrigger: {
+            trigger: card,
+            start: "-50% bottom",
+            markers: true,
+            toggleActions: "restart none none none",
+          },
+          opacity: 1,
+          rotateX: 0,
+          translateY: 0,
+          duration: 1,
+        }
+      );
+    });
+  });
+
   return (
     <section id="chores">
       <div className="chores-heading">
@@ -51,7 +86,7 @@ const Chores = () => {
                 always "forgets" to pay their share.
               </p>
             </div>
-            <video loop muted preload="true" id="video">
+            <video loop muted preload="true" id="video" crossOrigin="anonymous">
               <source
                 src="https://videos.pexels.com/video-files/7477075/7477075-uhd_2560_1440_25fps.mp4"
                 type="video/mp4"
@@ -70,7 +105,7 @@ const Chores = () => {
                 least it can remind someone else it’s their turn.
               </p>
             </div>
-            <video loop muted preload="true" id="video">
+            <video loop muted preload="true" id="video" crossOrigin="anonymous">
               <source
                 src="https://videos.pexels.com/video-files/4109575/4109575-uhd_1440_2732_25fps.mp4"
                 type="video/mp4"
@@ -89,7 +124,7 @@ const Chores = () => {
                 holding the leash (and the poop bag).
               </p>
             </div>
-            <video loop muted preload="true" id="video">
+            <video loop muted preload="true" id="video" crossOrigin="anonymous">
               <source
                 src="https://videos.pexels.com/video-files/3191251/3191251-uhd_2732_1440_25fps.mp4"
                 type="video/mp4"
@@ -108,7 +143,7 @@ const Chores = () => {
                 every night.
               </p>
             </div>
-            <video loop muted preload="true" id="video">
+            <video loop muted preload="true" id="video" crossOrigin="anonymous">
               <source
                 src="https://videos.pexels.com/video-files/4109347/4109347-uhd_2732_1440_25fps.mp4"
                 type="video/mp4"
@@ -128,7 +163,7 @@ const Chores = () => {
                 will do it this time.
               </p>
             </div>
-            <video loop muted preload="true" id="video">
+            <video loop muted preload="true" id="video" crossOrigin="anonymous">
               <source
                 src="https://videos.pexels.com/video-files/10557337/10557337-uhd_2732_1440_25fps.mp4"
                 type="video/mp4"
@@ -147,7 +182,7 @@ const Chores = () => {
                 getting that!"
               </p>
             </div>
-            <video loop muted preload="true" id="video">
+            <video loop muted preload="true" id="video" crossOrigin="anonymous">
               <source
                 src="https://videos.pexels.com/video-files/8420778/8420778-uhd_2560_1440_25fps.mp4"
                 type="video/mp4"

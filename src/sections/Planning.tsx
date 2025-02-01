@@ -34,7 +34,6 @@ const Planning = () => {
       // Offset the path coordinates based on mouse position
       const offsetX = mouseX * 30; // Adjust multiplier for stronger or weaker effect
       const offsetY = mouseY * 30; // Same for Y direction
-      console.log("SCALE: ", scale);
       const newClipPath = `path("M ${
         window.innerWidth / 2 + (759.586 - 759.586) * scale + offsetX + 200
       } ${
