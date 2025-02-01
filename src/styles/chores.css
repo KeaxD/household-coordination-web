@@ -109,6 +109,7 @@ h1 {
   padding: 0.75rem;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.324);
+  pointer-events: none;
 }
 
 .chores-card:hover .card-text {

@@ -1,10 +1,10 @@
 import gsap from "gsap";
 import "../styles/landingBanner.css";
-import { useEffect } from "react";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 const LandingBanner = () => {
-  useEffect(() => {
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.fromTo(
@@ -28,7 +28,7 @@ const LandingBanner = () => {
       },
       scale: 1.2,
     });
-  }, []);
+  });
 
   return (
     <section id="landing-banner">

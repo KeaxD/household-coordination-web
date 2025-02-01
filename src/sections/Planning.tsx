@@ -1,6 +1,7 @@
 import "../styles/planning.css";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Planning = () => {
   const maskRef = useRef<HTMLDivElement | null>(null);
@@ -16,7 +17,7 @@ const Planning = () => {
     return Math.min(Math.max(minScale, screenWidth / baseWidth), maxScale);
   };
 
-  useEffect(() => {
+  useGSAP(() => {
     //Clip path function based on the mouse position
     const mask = maskRef.current;
 
@@ -106,8 +107,6 @@ const Planning = () => {
       }
     });
 
-    // ======= GSAP ANIMATION ======== //
-
     //Animation for the outer-mask
     gsap.to(".outer-mask", {
       scrollTrigger: {
@@ -145,7 +144,7 @@ const Planning = () => {
       {
         scrollTrigger: {
           trigger: "#planning",
-          start: "10px top",
+          start: "top top",
           end: "bottom top",
           onEnter: () => {
             gsap.to("#planning", { backgroundColor: "#99ef64", duration: 0 });
@@ -162,7 +161,7 @@ const Planning = () => {
       window.removeEventListener("mousemove", updateClipPath);
       window.removeEventListener("resize", calculateScale);
     };
-  }, []);
+  });
 
   return (
     <section id="planning">

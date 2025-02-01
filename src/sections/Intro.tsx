@@ -1,10 +1,35 @@
 import "../styles/intro.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
+import flickerAnimation from "../helpers/flickerAnimation";
+import { useGSAP } from "@gsap/react";
 
 const Intro = () => {
-  useEffect(() => {
+  useGSAP(() => {
+    //Separation of each letter in the text under the frame
+    const words = document.querySelectorAll(".frame-text");
+
+    words.forEach((word) => {
+      if (!word || word.textContent === null) return;
+      const text = word.textContent;
+      word.innerHTML = text
+        .split(/(\s+)/)
+        .map((part) => {
+          if (part.trim() === "") {
+            return part;
+          } else {
+            return part
+              .split("")
+              .map(
+                (char) =>
+                  `<span style="opacity:0; display:inline-block;">${char}</span>`
+              )
+              .join("");
+          }
+        })
+        .join("");
+    });
+
     gsap.registerPlugin(ScrollTrigger);
 
     //Animation for the small caption "Welcome to HomeSync"
@@ -105,43 +130,6 @@ const Intro = () => {
         scale: 1, //Scale it to 100%
       }
     );
-
-    //Separation of each letter in the text under the frame
-    const words = document.querySelectorAll(".frame-text");
-
-    words.forEach((word) => {
-      if (!word || word.textContent === null) return;
-      const text = word.textContent;
-      word.innerHTML = text
-        .split(/(\s+)/)
-        .map((part) => {
-          if (part.trim() === "") {
-            return part;
-          } else {
-            return part
-              .split("")
-              .map(
-                (char) =>
-                  `<span style="opacity:0; display:inline-block;">${char}</span>`
-              )
-              .join("");
-          }
-        })
-        .join("");
-    });
-
-    //Animation for the text under the frame
-    function flickerAnimation(targets: any, toOpacity: number) {
-      gsap.to(targets, {
-        opacity: toOpacity,
-        duration: 0.03,
-        stagger: {
-          amount: 0.3,
-          from: "random",
-        },
-      });
-    }
-
     ScrollTrigger.create({
       trigger: ".intro-text",
       start: "top top",
@@ -151,12 +139,7 @@ const Intro = () => {
       onEnterBack: () => flickerAnimation(".frame-text span", 1),
       onLeaveBack: () => flickerAnimation(".frame-text span", 0),
     });
-
-    //Clean up all ScrollTriggers on unmount
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+  });
 
   return (
     <section id="intro">

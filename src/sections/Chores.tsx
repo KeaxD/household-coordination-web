@@ -1,31 +1,30 @@
-import { useEffect } from "react";
 import "../styles/chores.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 const Chores = () => {
-  useEffect(() => {
-    //Video play on hover
-    //Get the videos
-    let videos = document.querySelectorAll("#video");
+  useGSAP(() => {
+    // Get the parent containers (chores-card)
+    let choresCard = document.querySelectorAll(".chores-card");
 
-    //Loop through each video and set up a event listener for hover
-    videos.forEach((video) => {
-      if (video instanceof HTMLVideoElement) {
-        video.addEventListener("mouseover", () => {
-          video.currentTime = 0; //Make the video reset to the beginning
+    // Loop through each card and set up a hover event listener
+    choresCard.forEach((card) => {
+      const video = card.querySelector("video"); // Get the video inside the card
+      if (video) {
+        // Play the video when the parent is hovered
+        card.addEventListener("mouseover", () => {
+          video.currentTime = 0; // Reset video to the beginning
           video.play();
         });
 
-        video.addEventListener("mouseout", () => {
+        // Pause the video when the parent is no longer hovered
+        card.addEventListener("mouseout", () => {
           video.pause();
         });
       }
     });
-  }, []);
 
-  useGSAP(() => {
     //=======GSAP ======//
 
     gsap.registerPlugin(ScrollTrigger);
@@ -41,7 +40,6 @@ const Chores = () => {
           scrollTrigger: {
             trigger: card,
             start: "-50% bottom",
-            markers: true,
             toggleActions: "restart none none none",
           },
           opacity: 1,
