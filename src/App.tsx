@@ -1,4 +1,5 @@
 import "./App.css";
+import Chores from "./sections/Chores.js";
 import Intro from "./sections/Intro.js";
 import LandingBanner from "./sections/LandingBanner.js";
 import Planning from "./sections/Planning.js";
@@ -8,6 +9,7 @@ function App() {
       <LandingBanner />
       <Intro />
       <Planning />
+      <Chores />
     </>
   );
 }
