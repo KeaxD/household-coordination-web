@@ -1,5 +1,6 @@
 import "./App.css";
 import Chores from "./sections/Chores.js";
+import Contact from "./sections/Contact.js";
 import Intro from "./sections/Intro.js";
 import LandingBanner from "./sections/LandingBanner.js";
 import Planning from "./sections/Planning.js";
@@ -10,6 +11,7 @@ function App() {
       <Intro />
       <Planning />
       <Chores />
+      <Contact />
     </>
   );
 }

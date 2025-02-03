@@ -73,7 +73,7 @@ const Chores = () => {
           </h1>
         </div>
       </div>
-      <div className="chores-grid">
+      {/* <div className="chores-grid">
         <div className="chores-card budget">
           <div className="video-container">
             <div className="card-text">
@@ -189,7 +189,7 @@ const Chores = () => {
             </video>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

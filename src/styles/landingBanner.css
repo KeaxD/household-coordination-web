@@ -34,7 +34,6 @@
 }
 
 .banner-text h1 {
-  font-size: clamp(3rem, 50vw, 140px);
   text-transform: uppercase;
   margin: 0;
 }

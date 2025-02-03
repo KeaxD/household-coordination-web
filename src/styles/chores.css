@@ -4,6 +4,7 @@
   --padding: 5vw;
   padding-left: var(--padding);
   padding-right: var(--padding);
+  height: 100%;
 }
 
 .chores-heading {
@@ -23,16 +24,9 @@
 
 .chores-grid {
   display: grid;
-  grid-template-areas:
-    "item1 item1"
-    "item2 item3"
-    "item2 item4"
-    "item5 item6";
-  grid-template-columns: repeat(2, 1fr);
-  padding-top: 5rem;
-  min-height: 150vh;
-  margin: 0 5vw;
-  gap: 25px;
+  gap: 1.6rem;
+  padding: 0 1.6rem;
+  grid-template-areas: unset;
 }
 
 .grid-heading {
@@ -75,6 +69,7 @@ h1 {
   display: flex;
   justify-content: center;
   background-color: black;
+  min-width: 300px;
 }
 
 .chores-card:hover {
@@ -126,4 +121,20 @@ h1 {
 
 .card-text > p {
   width: 22rem;
+}
+
+@media (min-width: 1010px) {
+  .chores-grid {
+    display: grid;
+    grid-template-areas:
+      "item1 item1"
+      "item2 item3"
+      "item2 item4"
+      "item5 item6";
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    margin: 0 5vw;
+    gap: 25px;
+  }
 }
