@@ -33,8 +33,7 @@ const Contact = () => {
 
       ScrollTrigger.create({
         trigger: ".text",
-        start: "top 70%",
-        markers: true,
+        start: "top 40%",
         onEnter: () => flickerAnimation(".contact-text span", 1),
         onLeave: () => flickerAnimation(".contact-text span", 0),
         onEnterBack: () => flickerAnimation(".contact-text span", 1),

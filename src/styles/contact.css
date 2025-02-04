@@ -32,7 +32,7 @@
 }
 
 .contact-btn:hover {
-  color: rgba(44, 44, 44, 0.685);
+  color: rgba(235, 128, 128, 0.685);
 }
 
 .btn-container {
@@ -40,7 +40,6 @@
 }
 
 .contact-card > div {
-  background-color: black;
-  color: rgb(210, 210, 210);
+  color: rgba(0, 0, 0, 0.795);
   border-radius: 10px;
 }

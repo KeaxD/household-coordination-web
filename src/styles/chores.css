@@ -1,6 +1,5 @@
 #chores {
   padding-top: 10rem;
-  background-color: #99ef64;
   --padding: 10vw;
   padding: 10rem var(--padding);
 }
@@ -75,6 +74,10 @@ h1 {
   filter: brightness(50%);
 }
 
+.chores-card:hover {
+  transform: scale(0.2);
+}
+
 .chores-card {
   height: auto;
   display: flex;
@@ -82,10 +85,6 @@ h1 {
   min-height: 200px;
   width: 100%;
   height: 100%;
-}
-
-.chores-card:hover {
-  scale: 0.98;
 }
 
 .video-container {

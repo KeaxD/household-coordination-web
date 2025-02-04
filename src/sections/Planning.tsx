@@ -137,25 +137,6 @@ const Planning = () => {
       duration: 1,
     });
 
-    //Background color change
-    gsap.fromTo(
-      "#planning",
-      { backgroundColor: "white" }, // Initial state
-      {
-        scrollTrigger: {
-          trigger: "#planning",
-          start: "top top",
-          end: "bottom top",
-          onEnter: () => {
-            gsap.to("#planning", { backgroundColor: "#99ef64", duration: 0 });
-          },
-          onLeaveBack: () => {
-            gsap.to("#planning", { backgroundColor: "white", duration: 0 });
-          },
-        },
-      }
-    );
-
     //Cleanup event listener
     return () => {
       window.removeEventListener("mousemove", updateClipPath);
